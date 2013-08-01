@@ -13,3 +13,18 @@ solution for processing, storing, and visualizing statsd data.
 case) at a configurable rate. `hasta-la-vista` stores this data in a redis
 backend and, if someone is connected to its frontent, updates its D3 graphs
 over websockets.
+
+Installation for Development
+----------------------------
+
+First download the [Haskell Platform](http://www.haskell.org/platform/). Next:
+
+    $ cabal update
+    $ cabal install yesod-platform
+    $ cabal install yesod-bin
+
+
+Installation for Use
+--------------------
+
+I believe this will be compilable, so we can just deploy an executable....?

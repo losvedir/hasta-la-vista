@@ -1,0 +1,20 @@
+Default: &defaults
+  database: hasta-la-vista.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: hasta-la-vista_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: hasta-la-vista_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: hasta-la-vista_production.sqlite3
+  poolsize: 100
+  <<: *defaults
