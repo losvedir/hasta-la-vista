@@ -23,6 +23,48 @@ First download the [Haskell Platform](http://www.haskell.org/platform/). Next:
     $ cabal install yesod-platform
     $ cabal install yesod-bin
 
+Now clone in `hasta-la-vista`:
+
+    $ git clone git@github.com:losvedir/hasta-la-vista.git
+
+Run the development server for `hasta-la-vista` as follows:
+
+    $ yesod devel
+
+Install nodejs, if necessary. On a mac, you can use homebrew:
+
+    $ brew install nodejs
+
+Clone statsd into a different directory
+
+    $ git clone git@github.com:etsy/statsd.git
+
+Copy over the `hasta-la-vista` backend to your statsd directory.
+
+    $ cp [hlv dir]/hasta-la-vista.js [statsd dir]/backends/
+
+Configure statsd:
+
+    $ cp exampleConfig.json localConfig.json
+
+Edit the config file to use the hasta-la-vista backend. HLV expects host, port, and token:
+
+**localConfig.json**
+
+    {
+      hlv: { host: "127.0.0.1", port: 80, token: 'knockknockwhosthere' },
+      backends: [ "./backends/hasta-la-vista" ]
+    }
+
+Start statsd:
+
+    $ node stats.js localConfig.js
+
+As of now you will see errors every 10 seconds, because hasta-la-vista is not listening,
+although statsd is trying to post.
+
+
+
 
 Installation for Use
 --------------------
