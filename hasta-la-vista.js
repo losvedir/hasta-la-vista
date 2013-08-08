@@ -8,6 +8,7 @@ function HastaLaVista(startupTime, config, emitter){
 }
 
 HastaLaVista.prototype.flush = function(timestamp, metrics) {
+  console.log(metrics);
   console.log('Posting stats at', new Date(timestamp * 1000).toString());
 
   metricsString = JSON.stringify(metrics)
