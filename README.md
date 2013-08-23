@@ -41,29 +41,39 @@ Clone statsd into a different directory
 
 Copy over the `hasta-la-vista` backend to your statsd directory.
 
-    $ cp [hlv dir]/hasta-la-vista.js [statsd dir]/backends/
+    hasta-la-vista $ cp statsd-js/hasta-la-vista.js [statsd dir]/backends/
 
-Configure statsd:
+Copy over the `hasta-la-vista` statsd configuration to your stats directory:
 
-    $ cp exampleConfig.json localConfig.json
+    hasta-la-vista $ cp statsd-js/exampleConfig.json [statsd dir]/localConfig.json
 
-Edit the config file to use the hasta-la-vista backend. HLV expects host, port, and token:
+Edit the config file if desired. HLV expects host, port, and token. Default is to
+aggregate and flush stats once every 10 seconds.
 
 **localConfig.json**
 
     {
       hlv: { host: "127.0.0.1", port: 80, token: 'knockknockwhosthere' },
+      flushInterval: 1,
       backends: [ "./backends/hasta-la-vista" ]
     }
 
 Start statsd:
 
-    $ node stats.js localConfig.js
+    statsd $ node stats.js localConfig.js
 
 As of now you will see errors every 10 seconds, because hasta-la-vista is not listening,
 although statsd is trying to post.
 
+To verify that statsd is working, try posting to it:
 
+    $ echo "hlv.test:1|c" | nc -w 1 -u 127.0.0.1 8125
+
+You should see it show up in the counters in the running statsd log:
+
+    {   'statsd.bad_lines_seen': 0,
+        'statsd.packets_received': 1,
+        'hlv.test': 1 },
 
 
 Installation for Use
