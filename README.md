@@ -46,7 +46,7 @@ Copy over the `hasta-la-vista` statsd configuration to your stats directory:
     hasta-la-vista $ cp statsd-js/exampleConfig.json [statsd dir]/localConfig.json
 
 Edit the config file if desired. HLV expects host, port, and token. Default is to
-aggregate and flush stats once every 10 seconds.
+aggregate and flush stats once every 5 seconds.
 
 **localConfig.json**
 
@@ -60,7 +60,7 @@ Start statsd:
 
     statsd $ node stats.js localConfig.js
 
-As of now you will see errors every 10 seconds, because hasta-la-vista is not listening,
+As of now you will see errors every 5 seconds, because hasta-la-vista is not listening,
 although statsd is trying to post.
 
 To verify that statsd is working, try posting to it:

@@ -96,7 +96,7 @@ Optional Variables:
 
 */
 {
-  hlv: { host: "127.0.0.1", port: 80, token: 'nowyouseeme' }
-, flushInterval: 10000
+  hlv: { host: "localhost", port: 3000, token: 'nowyouseeme' }
+, flushInterval: 5000
 , backends: [ "./backends/hasta-la-vista" ]
 }
